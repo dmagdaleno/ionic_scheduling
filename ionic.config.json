@@ -1,5 +1,6 @@
 {
-  "name": "aluracar",
+  "name": "ionic_scheduling",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {}
 }
