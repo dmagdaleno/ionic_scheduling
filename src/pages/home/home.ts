@@ -1,20 +1,45 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {CarComponent} from '../../app/car/car.component'
+import { HttpErrorResponse } from '@angular/common/http'
+import { NavController, LoadingController, Loading, AlertController } from 'ionic-angular';
+import { Item } from '../../app/models/item'
+import { ItemServiceProvider } from '../../providers/item-service/item-service';
+import { NavLifecycles } from '../../utils/ionic/nav/nav-lifecycles';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements NavLifecycles {
+  public itens: Item[];
+  
+  constructor(
+    public navCtrl: NavController, 
+    private itemService: ItemServiceProvider,
+    private _loadingCtrl: LoadingController,
+    private _alertCtrl: AlertController) { }
 
-  public cars: CarComponent[];
+  ionViewDidLoad(){
+    let loading:Loading = this._loadingCtrl.create({
+      content: 'Carregando itens...'
+    });
 
-  constructor(public navCtrl: NavController) {
-    this.cars = [
-      new CarComponent("Gol", 20000),
-      new CarComponent("Brasília", 5000)
-    ];
+    loading.present();
+
+    this.itemService.lista()
+      .subscribe((itens) => {
+        this.itens = itens;
+        loading.dismiss();
+      },(erro: HttpErrorResponse) => {
+        console.log(erro);
+        loading.dismiss();
+        
+        this._alertCtrl.create({
+          title: 'Falha na conexão',
+          subTitle: 'Não foi possível carregar a lista de itens',
+          buttons: [{text: 'Ok'}]
+        }).present();
+
+      });
   }
 
 }
