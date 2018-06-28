@@ -4,6 +4,7 @@ import { NavController, LoadingController, Loading, AlertController } from 'ioni
 import { Item } from '../../app/models/item'
 import { ItemServiceProvider } from '../../providers/item-service/item-service';
 import { NavLifecycles } from '../../utils/ionic/nav/nav-lifecycles';
+import { EscolhaPage } from '../escolha/escolha';
 
 @Component({
   selector: 'page-home',
@@ -40,6 +41,13 @@ export class HomePage implements NavLifecycles {
         }).present();
 
       });
+  }
+
+  seleciona(item: Item){
+    console.log(item);
+    this.navCtrl.push(EscolhaPage.name, {
+      itemSelecionado: item
+    });
   }
 
 }
