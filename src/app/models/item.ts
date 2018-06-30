@@ -1,5 +1,5 @@
-export class Item {
+export interface Item {
     nome: string;
     preco: number;
-    fotos: string[];
+    fotos?: string[];
 }

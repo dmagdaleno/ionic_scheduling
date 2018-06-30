@@ -8,6 +8,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ItemServiceProvider } from '../providers/item-service/item-service';
+import { AgendamentosServiceProvider } from '../providers/agendamentos-service/agendamentos-service';
+
+import { IonicStorageModule } from '@ionic/storage'
+
+import 'rxjs/add/observable/fromPromise'
+import 'rxjs/add/observable/of'
+import 'rxjs/add/operator/catch'
+import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/finally'
+import 'rxjs/add/operator/mergeMap'
+import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
 
 @NgModule({
   declarations: [
@@ -17,7 +28,12 @@ import { ItemServiceProvider } from '../providers/item-service/item-service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'shedulingdb',
+      storeName: 'agendamentos',
+      driverOrder: ['indexeddb']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,7 +44,9 @@ import { ItemServiceProvider } from '../providers/item-service/item-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ItemServiceProvider
+    ItemServiceProvider,
+    AgendamentosServiceProvider,
+    AgendamentoDaoProvider
   ]
 })
 export class AppModule {}

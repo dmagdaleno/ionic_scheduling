@@ -28,15 +28,24 @@
       <ion-icon name="options"></ion-icon>
       SUBITENS
     </ion-item-divider>
-    <ion-item>Subitem 1</ion-item>
-    <ion-item>Subitem 2</ion-item>
+    <ion-item *ngFor="let subitem of subitens">
+      <ion-label>
+        <h2>{{ subitem.nome }}</h2>
+        <h4>R$ {{ subitem.preco }}</h4>
+      </ion-label>
+      <ion-toggle 
+        #toggle 
+        color="secondary" 
+        (ionChange)="atualizaTotal(toggle.checked, subitem)">
+      </ion-toggle>
+    </ion-item>
   </ion-item-group>
   
   <ion-item-divider color="light">
-    <span item-right>TOTAL: R$ 10000,00</span>
+    <span item-right>TOTAL: R$ {{ precoTotal }}</span>
   </ion-item-divider>
 
-  <ion-fab top right edge mini>
+  <ion-fab top right edge (click)="avancar()">
     <button ion-fab>
       <ion-icon name="arrow-dropright"></ion-icon>
     </button>

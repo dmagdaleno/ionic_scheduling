@@ -44,7 +44,6 @@ export class HomePage implements NavLifecycles {
   }
 
   seleciona(item: Item){
-    console.log(item);
     this.navCtrl.push(EscolhaPage.name, {
       itemSelecionado: item
     });
