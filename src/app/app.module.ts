@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
 import { ItemServiceProvider } from '../providers/item-service/item-service';
 import { AgendamentosServiceProvider } from '../providers/agendamentos-service/agendamentos-service';
 
@@ -23,7 +24,8 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
