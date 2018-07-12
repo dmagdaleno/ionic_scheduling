@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -8,11 +9,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
+  email: string;
+  senha: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  login(){
+    console.log('email: ' + this.email);
+    console.log('senha: ' + this.senha);
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
