@@ -20,6 +20,7 @@ import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/finally'
 import 'rxjs/add/operator/mergeMap'
 import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
+import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ItemServiceProvider,
     AgendamentosServiceProvider,
-    AgendamentoDaoProvider
+    AgendamentoDaoProvider,
+    UsuarioServiceProvider
   ]
 })
 export class AppModule {}
