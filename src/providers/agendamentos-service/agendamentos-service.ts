@@ -8,7 +8,7 @@ export class AgendamentosServiceProvider {
 
   public apiUrl:string = 'http://localhost:8080/api';
 
-  constructor(public _http: HttpClient) {
+  constructor(private _http: HttpClient) {
   }
 
   agendar(agendamento: Agendamento): Observable<any>{
