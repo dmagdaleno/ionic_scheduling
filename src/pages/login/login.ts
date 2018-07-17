@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 
 @IonicPage()
 @Component({
@@ -9,16 +10,29 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  email: string;
-  senha: string;
+  email: string = 'joao@alura.com.br';
+  senha: string = 'alura123';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private alertCtrl: AlertController,
+    private usuarioService: UsuarioServiceProvider) {
   }
 
   login(){
-    console.log('email: ' + this.email);
-    console.log('senha: ' + this.senha);
-    this.navCtrl.setRoot(HomePage);
+    this.usuarioService.login(this.email, this.senha)
+      .subscribe(() => {
+        this.navCtrl.setRoot(HomePage);
+      },
+      () => {
+        this.alertCtrl.create({
+          title: 'Falha no login', 
+          subTitle: 'Email ou senha incorretos!',
+          buttons: [{text: 'Ok'}]
+        }).present();
+      }
+    );
   }
 
 }
