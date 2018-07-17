@@ -15,8 +15,9 @@ export class UsuarioServiceProvider {
   }
 
   login(email, senha){
-    this._http.post<Usuario>(this.apiUrl.concat('/login'), {email: email, senha: senha})
-    .do((usuario: Usuario) => this.usuarioLogado = usuario)
+    return this._http
+      .post<Usuario>(this.apiUrl.concat('/login'), {email: email, senha: senha})
+      .do((usuario: Usuario) => this.usuarioLogado = usuario)
   }
 
   obtemUsuarioLogado(): Usuario {
