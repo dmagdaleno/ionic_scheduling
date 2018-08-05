@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsuarioServiceProvider {
 
-  public apiUrl:string = 'http://localhost:8080/api';
+  public apiUrl:string = 'http://192.168.15.17:8080/api';
 
   private usuarioLogado: Usuario;
 

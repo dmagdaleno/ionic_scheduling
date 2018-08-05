@@ -6,7 +6,7 @@ import { Item } from '../../app/models/item';
 @Injectable()
 export class ItemServiceProvider {
 
-  public apiUrl:string = 'http://localhost:8080/api';
+  public apiUrl:string = 'http://192.168.15.17:8080/api';
 
   constructor(private _http: HttpClient) {
   }
