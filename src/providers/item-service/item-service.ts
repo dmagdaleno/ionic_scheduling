@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Item } from '../../app/models/item';
+import { ApiProvider } from '../api/api';
 
 @Injectable()
 export class ItemServiceProvider {
 
-  public apiUrl:string = 'http://192.168.15.17:8080/api';
+  private apiUrl: string;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private api: ApiProvider) {
+    this.apiUrl = this.api.getUrl();
   }
 
   lista(): Observable<Item[]>{

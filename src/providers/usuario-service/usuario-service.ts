@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../../app/models/usuario';
 
 import 'rxjs/add/operator/map';
+import { ApiProvider } from '../api/api';
 
 @Injectable()
 export class UsuarioServiceProvider {
 
-  public apiUrl:string = 'http://192.168.15.17:8080/api';
-
   private usuarioLogado: Usuario;
+  private apiUrl: string;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private api: ApiProvider) {
+    this.apiUrl = this.api.getUrl();
   }
 
   login(email, senha){

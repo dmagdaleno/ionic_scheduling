@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Agendamento } from '../../app/models/agendamento';
 import { Observable } from 'rxjs/Observable';
+import { ApiProvider } from '../api/api';
 
 @Injectable()
 export class AgendamentosServiceProvider {
 
-  public apiUrl:string = 'http://192.168.15.17:8080/api';
+  private apiUrl: string;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private api: ApiProvider) {
+    this.apiUrl = this.api.getUrl();
   }
 
   agendar(agendamento: Agendamento): Observable<any>{
