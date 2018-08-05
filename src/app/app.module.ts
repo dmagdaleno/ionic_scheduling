@@ -21,6 +21,7 @@ import 'rxjs/add/operator/finally'
 import 'rxjs/add/operator/mergeMap'
 import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
+import { ApiProvider } from '../providers/api/api';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
     ItemServiceProvider,
     AgendamentosServiceProvider,
     AgendamentoDaoProvider,
-    UsuarioServiceProvider
+    UsuarioServiceProvider,
+    ApiProvider
   ]
 })
 export class AppModule {}
