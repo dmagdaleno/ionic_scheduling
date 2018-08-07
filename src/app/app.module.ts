@@ -22,6 +22,7 @@ import 'rxjs/add/operator/mergeMap'
 import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento-dao';
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { ApiProvider } from '../providers/api/api';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ApiProvider } from '../providers/api/api';
     AgendamentosServiceProvider,
     AgendamentoDaoProvider,
     UsuarioServiceProvider,
-    ApiProvider
+    ApiProvider,
+    Vibration
   ]
 })
 export class AppModule {}
