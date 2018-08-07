@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Vibration } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, Alert } from 'ionic-angular';
 import { Item } from '../../app/models/item';
 import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
@@ -31,7 +32,8 @@ export class CadastroPage {
     private agendamentoDao: AgendamentoDaoProvider,
     private _loadingCtrl: LoadingController,
     private _alertCtrl: AlertController,
-    private _vibration: Vibration) {
+    private _vibration: Vibration,
+    private _datePicker: DatePicker) {
 
       this.item = this.navParams.get('itemSelecionado');
       this.precoTotal = this.navParams.get('precoTotal');
@@ -108,5 +110,12 @@ export class CadastroPage {
         titulo = 'ERRO';
         mensagem = error.message;
       });
+  }
+
+  selecionaData() {
+    this._datePicker.show({
+      date: new Date(),
+      mode: 'date'
+    }).then(data => this.data = data.toISOString());
   }
 }
