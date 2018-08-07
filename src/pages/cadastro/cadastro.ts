@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Vibration } from '@ionic-native/vibration';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, Alert } from 'ionic-angular';
 import { Item } from '../../app/models/item';
 import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
@@ -29,7 +30,8 @@ export class CadastroPage {
     private agendamentoService: AgendamentosServiceProvider,
     private agendamentoDao: AgendamentoDaoProvider,
     private _loadingCtrl: LoadingController,
-    private _alertCtrl: AlertController) {
+    private _alertCtrl: AlertController,
+    private _vibration: Vibration) {
 
       this.item = this.navParams.get('itemSelecionado');
       this.precoTotal = this.navParams.get('precoTotal');
@@ -37,6 +39,7 @@ export class CadastroPage {
 
   agendar(){
     if(!this.nome || !this.endereco || !this.email){
+      this._vibration.vibrate(300);
       this._alertCtrl.create({
         title: 'Campo obrigatório',
         subTitle: 'Favor preencher todos os campos',
