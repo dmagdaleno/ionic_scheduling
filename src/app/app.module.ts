@@ -23,6 +23,7 @@ import { AgendamentoDaoProvider } from '../providers/agendamento-dao/agendamento
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
 import { ApiProvider } from '../providers/api/api';
 import { Vibration } from '@ionic-native/vibration';
+import { DatePicker } from '@ionic-native/date-picker';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { Vibration } from '@ionic-native/vibration';
     AgendamentoDaoProvider,
     UsuarioServiceProvider,
     ApiProvider,
-    Vibration
+    Vibration,
+    DatePicker
   ]
 })
 export class AppModule {}
