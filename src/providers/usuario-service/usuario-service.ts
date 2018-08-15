@@ -5,6 +5,8 @@ import { Usuario } from '../../app/models/usuario';
 import 'rxjs/add/operator/map';
 import { ApiProvider } from '../api/api';
 
+const CHAVE = 'avatar-usuario';
+
 @Injectable()
 export class UsuarioServiceProvider {
 
@@ -23,6 +25,16 @@ export class UsuarioServiceProvider {
 
   obtemUsuarioLogado(): Usuario {
     return this.usuarioLogado;
+  }
+
+  salvaAvatar(uri: string){
+    localStorage.setItem(CHAVE, uri);
+  }
+
+  obtemAvatar(): string {
+    return localStorage.getItem(CHAVE)
+            ? localStorage.getItem(CHAVE)
+            : 'assets/img/avatar-padrao.jpg';
   }
 
 }
